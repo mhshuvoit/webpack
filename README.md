@@ -22,8 +22,6 @@ To create a development build...
 npm run build-dev
 ```
 
-## Running
-
 ```sh
-node dist/bundle.js
+It will build node dist/bundle.js
 ```
