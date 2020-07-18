@@ -1,22 +1,22 @@
-# webpack
+# Webpack
 
-Empty project.
+This is a empty project.
 
-## Building and running on localhost
+## Get started
 
-First install dependencies:
+Install the dependencies...
 
 ```sh
 npm install
 ```
 
-To create a production build:
+To create a production build...
 
 ```sh
 npm run build-prod
 ```
 
-To create a development build:
+To create a development build...
 
 ```sh
 npm run build-dev
