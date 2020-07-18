@@ -1,6 +1,6 @@
 # Webpack
 
-This is a empty project.
+This is an empty project.
 
 ## Get started
 
