@@ -8,14 +8,14 @@ const config = {
   entry: './src/index.js',
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/dist'
   },
-  // mode: 'development',
-  // devServer: {
-  //   port: 3000,
-  //   open: true,
-  //   compress: true
-  // },
+  devServer: {
+    port: 3000,
+    open: true,
+    compress: true
+  },
   module: {
     rules: [
       {
