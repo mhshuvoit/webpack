@@ -9,7 +9,7 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'build'),
     filename: 'js/index.js',
-    publicPath: '/assets/',
+    // publicPath: '/assets/',
   },
   mode: 'development',
   devServer: {
