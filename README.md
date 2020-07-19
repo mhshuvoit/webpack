@@ -10,6 +10,12 @@ Install the dependencies...
 npm install
 ```
 
+To run in localhost...
+
+```sh
+npm start
+```
+
 To create a production build...
 
 ```sh
@@ -23,5 +29,6 @@ npm run build-dev
 ```
 
 ```sh
-It will build node dist/bundle.js
+If you do npm start, It will run in browser
+If you do npm run build-prod or npm run build-dev, It will build in build folder
 ```
