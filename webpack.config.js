@@ -1,47 +1,56 @@
-const webpack = require('webpack');
-const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const LodashModuleReplacementPlugin = require('lodash-webpack-plugin');
+const path = require('path')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const config = {
-  entry: './src/index.js',
+module.exports = {
+  entry: './src/script/index.js',
   output: {
-    path: path.resolve(__dirname, 'build'),
-    filename: 'js/index.js',
-    // publicPath: '/assets/',
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
   },
   mode: 'development',
+
   devServer: {
-    port: 3000,
-    open: true,
-    compress: true,
-    contentBase: path.join(__dirname, 'public')
+    port: 3500
   },
+
   module: {
     rules: [
       {
-        test: /\.js$/,
-        use: 'babel-loader',
-        exclude: /node_modules/
+        test: /\.m?js$/,
+        exclude: /(node_modules|bower_components)/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env'],
+            plugins: ['@babel/plugin-proposal-object-rest-spread']
+          }
+        }
       },
       {
-        test: /\.css$/,
+        test: /\.css$/i,
+        use: [MiniCssExtractPlugin.loader, 'css-loader'],
+      },
+      {
+        test: /\.s[ac]ss$/i,
         use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader'
-        ]
+          "style-loader",
+          "css-loader",
+          "sass-loader",
+        ],
+      },
+      {
+        test: /\.html$/i,
+        loader: 'html-loader',
       }
     ]
   },
   plugins: [
-    new HtmlWebpackPlugin({
-      appMountId: 'app',
-      filename: 'index.html'
+    new MiniCssExtractPlugin({
+      filename: '[name].css'
     }),
-    new LodashModuleReplacementPlugin,
-    new MiniCssExtractPlugin()
+    new HtmlWebpackPlugin({
+      template: './public/index.html'
+    })
   ]
-};
-
-module.exports = config;
+}
